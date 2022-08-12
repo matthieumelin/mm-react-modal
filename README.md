@@ -20,9 +20,11 @@ A simple plugin for create modal for React.js
 - ``isOpen`` (boolean): variable controlling the display of the modal
 - ``message`` (string): custom message written on the modal
 - ``onConfirm`` (function): action triggered when clicking on the 'closed' icon (& triggered on clicking outside the modal if no action is provided for this action).
+- ``customModal`` (object): custom background of the modal
 - ``customCloseButton`` (object): custom style of the close button
 - ``customMessage`` (object): custom style of the message written on the modal
-- ``customContainer`` (object): custom style of modal container
+- ``customContainer`` (object): custom style of the modal
+- ``onClickOutside`` (function): action triggered when clicking outside the modal
 
 *App.js (default)*
 ```javascript
