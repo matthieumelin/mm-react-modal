@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# React Modal Plugin
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple plugin for create modal for React.js
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Custom style on components
+- Dynamic display control
 
-### `npm start`
+# Get started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Requirements**
+- React 18.2.0+
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Installation**
+- Using npm `npm install @matthieumelin/mm-react-modal`
+- Using yarn `yarn add @matthieumelin/mm-react-modal`
 
-### `npm test`
+**Usage**
+- ``isOpen`` (boolean): variable controlling the display of the modal
+- ``message`` (string): custom message written on the modal
+- ``onConfirm`` (function): action triggered when clicking on the 'closed' icon (& triggered on clicking outside the modal if no action is provided for this action).
+- ``customCloseButton`` (object): custom style of the close button
+- ``customMessage`` (object): custom style of the message written on the modal
+- ``customContainer`` (object): custom style of modal container
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+*App.js (default)*
+```javascript
+import React, { useState } from "react";
+import Modal from "@matthieumelin/mm-react-modal";
 
-### `npm run build`
+const App = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  return (
+    <div className="App">
+      <div onClick={() => setModalIsOpen(!modalIsOpen)}>
+        Click here to open modal
+      </div>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+      <Modal
+      message={"Employeee Created!"}
+      isOpen={modalIsOpen} 
+      onConfirm={toggleModal}/>
+    </div>
+  );
+}
+export default App;
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+*App.js (with custom style)*
+```javascript
+import React, { useState } from "react";
+import Modal from "@matthieumelin/mm-react-modal";
 
-### `npm run eject`
+const App = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  return (
+    <div className="App">
+      <div onClick={() => setModalIsOpen(!modalIsOpen)}>
+        Click here to open modal
+      </div>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+      <Modal customCloseButton={{
+        position: "absolute",
+        right: -10,
+        top: -10,
+        width: 15,
+        height: 15,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 15,
+        borderRadius: 100,
+      }}
+      customMessage={{ textAlign: "center", width: "100%" }}
+      customContainer={{ position: "relative", height: 50, width: 400 }}
+      message={"Employeee Created!"}
+      isOpen={modalIsOpen} 
+      onConfirm={toggleModal}/>
+    </div>
+  );
+}
+export default App;
+```
