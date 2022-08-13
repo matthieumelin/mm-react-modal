@@ -23,10 +23,10 @@ const Modal = props => {
   return /*#__PURE__*/_react.default.createElement(StyledModal, {
     isOpen: props.isOpen,
     onClick: props.onClickOutside ? props.onClickOutside : props.onConfirm,
-    style: props.customModal
+    style: props.customContainer
   }, /*#__PURE__*/_react.default.createElement(ModalContainer, {
     onClick: event => event.stopPropagation(),
-    style: props.customContainer
+    style: props.customModal
   }, /*#__PURE__*/_react.default.createElement(ModalCloseButton, {
     onClick: props.onConfirm,
     style: props.customCloseButton

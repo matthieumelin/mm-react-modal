@@ -8,11 +8,11 @@ const Modal = (props) => {
     <StyledModal
       isOpen={props.isOpen}
       onClick={props.onClickOutside ? props.onClickOutside : props.onConfirm}
-      style={props.customModal}
+      style={props.customContainer}
     >
       <ModalContainer
         onClick={(event) => event.stopPropagation()}
-        style={props.customContainer}
+        style={props.customModal}
       >
         <ModalCloseButton onClick={props.onConfirm} style={props.customCloseButton}>
           <ModalCloseButtonIcon alt="Close Button" src={CloseIcon} />

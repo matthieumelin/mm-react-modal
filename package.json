@@ -1,6 +1,6 @@
 {
     "name": "@matthieumelin/mm-react-modal",
-    "version": "2.5.0",
+    "version": "2.7.0",
     "private": false,
     "description": "A simple plugin for create modal.",
     "main": "./dist/Modal.js",
